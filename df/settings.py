@@ -124,3 +124,29 @@ EMAIL_HOST_USER = '13476059775@163.com'
 EMAIL_HOST_PASSWORD = 'python794685'
 #收件人看到的发件人
 EMAIL_FROM = '天天生鲜<13476059775@163.com>'
+
+
+# django的缓存配置
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/9",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+#配置django储存session
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+LOGIN_URL = '/user/login'
+
+# 设置django文件管理类
+DEFAULT_FILE_STORAGE='utils.fdfs.storage.FDFSStorage'
+
+# 设置fdfs使用的client.conf文件路径
+FDFS_CLIENT_CONF='./utils/fdfs/client.conf'
+# 设置fdfs存储服务器上nginx的IP和端口号
+FDFS_URL='http://127.0.0.1:8888/'
